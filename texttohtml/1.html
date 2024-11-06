@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text to HTML Generator</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #333;
+    }
+
+    /* Container to Center Everything */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+      max-width: 600px;
+      background: #ffffffcc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Text Area Styling */
+    textarea, pre {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 15px; /* Space between the boxes */
+    }
+
+    /* Preformatted Text Box Styling */
+    pre {
+      background: #f4f4f4;
+      color: #444;
+      text-align: left;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    /* Button Styling */
+    button {
+      margin-bottom: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff6f61;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #e05550;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Text to HTML Generator</h2>
+    <textarea id="textInput" placeholder="Enter your plain text here..."></textarea>
+    <button onclick="generateHTML()">Generate HTML</button>
+    <pre id="output"></pre>
+  </div>
+
+  <script>
+    function generateHTML() {
+      const textInput = document.getElementById("textInput").value;
+      const htmlOutput = textInput
+                          .split("\n")
+                          .map(line => `<p>${line}</p>`)
+                          .join("\n");
+      document.getElementById("output").textContent = htmlOutput;
+    }
+  </script>
+</body>
+</html>
